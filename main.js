@@ -1,0 +1,80 @@
+var messageButton = document.querySelector('button');
+var meditatorIcon = document.querySelector('img');
+var messageDisplay = document.querySelector('#message');
+var mantraRadio = document.querySelector('#mantra');
+var affirmationRadio = document.querySelector('#affirmation');
+
+var affirmations = [
+'I forgive myself and set myself free.',
+'I believe I can be all that I want to be.',
+'I am in the process of becoming the best version of myself.',
+'I have the freedom & power to create the life I desire.',
+'I choose to be kind to myself and love myself, unconditionally.',
+'My possibilities are endless.',
+'I am worthy of my dreams.',
+'I am enough.',
+'I deserve to be healthy and feel good.',
+'I am full of energy and vitality and my mind is calm and peaceful.',
+'Every day I am getting healthier and stronger.',
+'I honor my body by trusting the signals that it sends me.',
+'I manifest perfect health by making smart choices.'
+]
+var mantras = [
+  'Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.',
+  'Don’t let yesterday take up too much of today.',
+  'Every day is a second chance.',
+  'Tell the truth and love everyone.',
+  'I am free from sadness.',
+  'I am enough.',
+  'In the beginning it is you, in the middle it is you and in the end it is you.',
+  'I love myself.',
+  'I am present now.',
+  'Inhale the future, exhale the past.',
+  'This too shall pass.',
+  'Yesterday is not today.',
+  'The only constant is change.'
+]
+
+messageButton.addEventListener('click', displayMessage);
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function chooseMessage() {
+  if (mantraRadio.checked == true) {
+    return mantras;
+  } else if (affirmationRadio.checked == true) {
+    return affirmations;
+  }
+}
+
+function toggleIcon(icon, message) {
+  icon.classList.add('hidden');
+  message.classList.remove('hidden');
+}
+
+// function revealIcon() {
+//   meditatorIcon.classList.remove('hidden');
+//   messageDisplay.classList.add('hidden');
+// }
+
+function getAnyRandomMessage() {
+  var allMessages = mantras.concat(affirmations);
+  return allMessages[getRandomIndex(allMessages)];
+}
+
+function getChosenMessage() {
+  var messageType = chooseMessage();
+  return messageType[getRandomIndex(messageType)];
+}
+
+function displayMessage() {
+  event.preventDefault();
+  toggleIcon(meditatorIcon, messageDisplay);
+  if (chooseMessage() == mantras || chooseMessage() == affirmations) {
+    messageDisplay.innerText = getChosenMessage();
+  } else {
+    messageDisplay.innerText = getAnyRandomMessage();
+  }
+}

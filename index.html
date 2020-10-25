@@ -4,20 +4,21 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   </head>
-  <body class="gradient">
+  <body>
     <main>
       <h1>✨Self Care Center✨</h1>
-      <h3>Which type of message?</h3>
+      <h2>Which type of message?</h2>
         <form id="choose-message">
-          <input type="radio" id="affirmation">
+          <input type="radio" name="message" id="affirmation" value="affirmations">
           <label for="affirmation">affirmation</label>
           <button>Receive Message</button>
-          <input type="radio" id="mantra">
+          <input type="radio" name="message" id="mantra" value ="mantras">
           <label for="mantra" id="mantra-label">mantra</label>
         </form>
       </section>
       <form id="display-message">
-        <img src="./assets/meditate.svg">
+        <img id="meditator-icon" src="./assets/meditate.svg">
+        <h3 class="hidden" id="message"></h3>
       </form>
     </main>
       <script type="text/javascript" src="main.js"></script>
