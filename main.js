@@ -1,8 +1,9 @@
-var messageButton = document.querySelector('button');
+var messageButton = document.querySelector('#display-message');
 var meditatorIcon = document.querySelector('img');
 var messageDisplay = document.querySelector('#message');
 var mantraRadio = document.querySelector('#mantra');
 var affirmationRadio = document.querySelector('#affirmation');
+var clearButton = document.querySelector('#clear-message');
 
 var affirmations = [
 'I forgive myself and set myself free.',
@@ -36,6 +37,7 @@ var mantras = [
 ]
 
 messageButton.addEventListener('click', displayMessage);
+clearButton.addEventListener('click', clearMessageDisplay);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -49,32 +51,41 @@ function chooseMessage() {
   }
 }
 
-function toggleIcon(icon, message) {
-  icon.classList.add('hidden');
-  message.classList.remove('hidden');
+function toggleIcon(hiddenElement, visibleElement) {
+  visibleElement.classList.add('hidden');
+  hiddenElement.classList.remove('hidden');
+  clearButton.classList.add('hidden');
+  // toggleClearButton();
 }
 
-// function revealIcon() {
-//   meditatorIcon.classList.remove('hidden');
-//   messageDisplay.classList.add('hidden');
-// }
-
-function getAnyRandomMessage() {
-  var allMessages = mantras.concat(affirmations);
-  return allMessages[getRandomIndex(allMessages)];
-}
-
-function getChosenMessage() {
+function getRandomMessage() {
   var messageType = chooseMessage();
   return messageType[getRandomIndex(messageType)];
 }
 
+function toggleClearButton() {
+  clearButton.classList.toggle('hidden');
+}
+
 function displayMessage() {
   event.preventDefault();
-  toggleIcon(meditatorIcon, messageDisplay);
-  if (chooseMessage() == mantras || chooseMessage() == affirmations) {
-    messageDisplay.innerText = getChosenMessage();
-  } else {
-    messageDisplay.innerText = getAnyRandomMessage();
+  if (chooseMessage() == mantras || affirmations) {
+    messageDisplay.innerText = getRandomMessage();
+    toggleIcon(messageDisplay, meditatorIcon);
+    toggleClearButton();
   }
+}
+
+function toggleClearButton() {
+  if (clearButton.classList == 'hidden') {
+    clearButton.classList.remove('hidden')
+  } else {
+    clearButton.classList.add('hidden');
+  }
+}
+
+function clearMessageDisplay() {
+  toggleIcon(meditatorIcon, messageDisplay);
+  mantraRadio.checked = false;
+  affirmationRadio.checked = false;
 }
