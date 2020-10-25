@@ -13,43 +13,68 @@ html {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Quicksand', sans-serif;
   color: #ffffff;
+  height: 500px;
+}
+
+
+label {
+  font-family: 'Quicksand', sans-serif;
+  font-style: italic;
+  font-size: 1em;
+  color: #000000;
+  align-self: flex-start;
+  padding-top: 5%;
 }
 
 form {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
+input {
+  height: 30%;
+  width: 30%;
+  margin-top: 3%;
+}
+
+img {
+  height: 7em;
+  align-self: center;
+}
 
 button {
   align-self: flex-end;
   background: #134d71;
-  height: 40px;
-  width: 175px;
-  border-radius: 10px;
+  height: 3em;
+  width: 45em;
+  border-radius: 0.5em;
   color: #ffffff;
   padding: auto;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
-  margin: auto;
+  margin-bottom: 1%;
+
 }
 
 #choose-message {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  height: 100px;
-  width: 500px;
+  height: 6em;
+  width: 30em;
 }
 
 #display-message {
   height: 150px;
   width: 700px;
+}
+
+ #mantra-label {
+  margin-right: 3.5em;
 }
 
 .gradient {
