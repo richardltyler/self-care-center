@@ -80,3 +80,12 @@ button {
 .gradient {
   background-image: linear-gradient(#134d71 15%, #78a7c6 60%, #f7e4bf);
 }
+
+.hidden {
+  display: none!important;
+}
+
+#message {
+  font-family: 'Quicksand', sans-serif;
+  color: #000000;
+}

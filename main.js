@@ -1,4 +1,6 @@
 var messageButton = document.querySelector('button');
+var meditatorIcon = document.querySelector('img');
+var messageDisplay = document.querySelector('#message');
 
 var affirmations = [
 'I forgive myself and set myself free.',
@@ -31,12 +33,27 @@ var mantras = [
   'The only constant is change.'
 ]
 
-button.addEventListener('click', displayMessage);
+messageButton.addEventListener('click', displayMessage);
 
-function hideIcon () {
-  img.classList.toggle('hidden');
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function hideIcon() {
+  meditatorIcon.classList.add('hidden');
+}
+
+function revealIcon() {
+  meditatorIcon.classList.remove('hidden');
+}
+
+function getRandomMantra() {
+  var randomMessage = mantras[getRandomIndex(mantras)]
+  messageDisplay.innerText = randomMessage;
 }
 
 function displayMessage() {
-
+  event.preventDefault();
+  hideIcon();
+  getRandomMantra()
 }
