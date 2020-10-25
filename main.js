@@ -41,31 +41,40 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-function hideIcon() {
-  meditatorIcon.classList.add('hidden');
-  messageDisplay.classList.remove('hidden');
-}
-
-function revealIcon() {
-  meditatorIcon.classList.remove('hidden');
-}
-
-function getRandomMessage() {
-  var messageType = chooseMessage();
-  var randomMessage = messageType[getRandomIndex(messageType)];
-  return randomMessage;
-}
-
-function displayMessage() {
-  event.preventDefault();
-  hideIcon();
-  messageDisplay.innerText = getRandomMessage();
-}
-
 function chooseMessage() {
   if (mantraRadio.checked == true) {
     return mantras;
   } else if (affirmationRadio.checked == true) {
     return affirmations;
+  }
+}
+
+function toggleIcon(icon, message) {
+  icon.classList.add('hidden');
+  message.classList.remove('hidden');
+}
+
+// function revealIcon() {
+//   meditatorIcon.classList.remove('hidden');
+//   messageDisplay.classList.add('hidden');
+// }
+
+function getAnyRandomMessage() {
+  var allMessages = mantras.concat(affirmations);
+  return allMessages[getRandomIndex(allMessages)];
+}
+
+function getChosenMessage() {
+  var messageType = chooseMessage();
+  return messageType[getRandomIndex(messageType)];
+}
+
+function displayMessage() {
+  event.preventDefault();
+  toggleIcon(meditatorIcon, messageDisplay);
+  if (chooseMessage() == mantras || chooseMessage() == affirmations) {
+    messageDisplay.innerText = getChosenMessage();
+  } else {
+    messageDisplay.innerText = getAnyRandomMessage();
   }
 }
