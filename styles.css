@@ -99,3 +99,9 @@ img {
 .hidden {
   display: none!important;
 }
+
+#clear-message {
+  align-self: center;
+  margin-top: 3em;
+  width: 18em;
+}
