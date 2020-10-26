@@ -11,15 +11,16 @@
         <form id="choose-message">
           <input type="radio" name="message" id="affirmation" value="affirmations">
           <label for="affirmation">affirmation</label>
-          <button>Receive Message</button>
+          <button id="display-message">Receive Message</button>
           <input type="radio" name="message" id="mantra" value ="mantras">
           <label for="mantra" id="mantra-label">mantra</label>
         </form>
       </section>
-      <form id="display-message">
+      <form id="message-display">
         <img id="meditator-icon" src="./assets/meditate.svg">
         <h3 class="hidden" id="message"></h3>
       </form>
+      <button class="hidden" id="clear-message">Clear</button>
     </main>
       <script type="text/javascript" src="main.js"></script>
   </body>

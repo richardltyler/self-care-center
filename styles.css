@@ -78,7 +78,7 @@ button {
 
 }
 
-#display-message {
+#message-display {
   height: 8em;
   width: 50em;
   margin-top: 7em;
@@ -98,4 +98,10 @@ img {
 
 .hidden {
   display: none!important;
+}
+
+#clear-message {
+  align-self: center;
+  margin-top: 3em;
+  width: 18em;
 }
