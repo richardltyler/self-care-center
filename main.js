@@ -44,9 +44,9 @@ function getRandomIndex(array) {
 }
 
 function chooseMessage() {
-  if (mantraRadio.checked == true) {
+  if (mantraRadio.checked === true) {
     return mantras;
-  } else if (affirmationRadio.checked == true) {
+  } else if (affirmationRadio.checked === true) {
     return affirmations;
   }
 }
@@ -55,7 +55,6 @@ function toggleIcon(hiddenElement, visibleElement) {
   visibleElement.classList.add('hidden');
   hiddenElement.classList.remove('hidden');
   clearButton.classList.add('hidden');
-  // toggleClearButton();
 }
 
 function getRandomMessage() {
@@ -68,11 +67,13 @@ function toggleClearButton() {
 }
 
 function displayMessage() {
-  event.preventDefault();
-  if (chooseMessage() == mantras || affirmations) {
+  // event.preventDefault();
+  if (chooseMessage() == mantras || chooseMessage() == affirmations) {
     messageDisplay.innerText = getRandomMessage();
     toggleIcon(messageDisplay, meditatorIcon);
     toggleClearButton();
+  } else {
+    notifyUser('Choose a message type, silly!');
   }
 }
 
@@ -88,4 +89,9 @@ function clearMessageDisplay() {
   toggleIcon(meditatorIcon, messageDisplay);
   mantraRadio.checked = false;
   affirmationRadio.checked = false;
+  notifyUser('Messages cleared!');
+}
+
+function notifyUser(message) {
+  window.alert(message);
 }
