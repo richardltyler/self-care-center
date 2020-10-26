@@ -67,7 +67,7 @@ function toggleClearButton() {
 }
 
 function displayMessage() {
-  // event.preventDefault();
+  event.preventDefault();
   if (chooseMessage() == mantras || chooseMessage() == affirmations) {
     messageDisplay.innerText = getRandomMessage();
     toggleIcon(messageDisplay, meditatorIcon);
