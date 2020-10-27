@@ -36,6 +36,9 @@ var mantras = [
   'The only constant is change.'
 ]
 
+var viewedMantras = [];
+var viewedAffirmations = [];
+
 messageButton.addEventListener('click', displayMessage);
 clearButton.addEventListener('click', clearMessageDisplay);
 
@@ -48,6 +51,8 @@ function chooseMessage() {
     return mantras;
   } else if (affirmationRadio.checked === true) {
     return affirmations;
+  } else {
+    notifyUser('Choose a message type, silly!');
   }
 }
 
@@ -68,21 +73,13 @@ function toggleClearButton() {
 
 function displayMessage() {
   event.preventDefault();
+  var randomMessage = getRandomMessage();
   if (chooseMessage() == mantras || chooseMessage() == affirmations) {
-    messageDisplay.innerText = getRandomMessage();
+    messageDisplay.innerText = randomMessage;
     toggleIcon(messageDisplay, meditatorIcon);
     toggleClearButton();
-  } else {
-    notifyUser('Choose a message type, silly!');
   }
-}
-
-function toggleClearButton() {
-  if (clearButton.classList == 'hidden') {
-    clearButton.classList.remove('hidden')
-  } else {
-    clearButton.classList.add('hidden');
-  }
+  return randomMessage;
 }
 
 function clearMessageDisplay() {
@@ -95,3 +92,14 @@ function clearMessageDisplay() {
 function notifyUser(message) {
   window.alert(message);
 }
+
+// function checkForDuplicate() {
+//   var messageChoice = chooseMessage();
+//   var currentMessage = displayMessage();
+//   var viewedMessages = viewedMantras.concat(viewedAffirmations);
+//   if(!viewedMessages.includes(currentMessage)) {
+//     messageChoice.push(currentMessage);
+//   } else if (viewedMessages.includes(currentMessage)) {
+//
+//   }
+// }
